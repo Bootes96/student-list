@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "psr-4": {
+            "studentList\\": "vendor/studentList",
+            "app\\": "app"
+        }
+    },
+    "require": {}
+}
