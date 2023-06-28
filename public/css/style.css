@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+i {
+    cursor: pointer;
+}
+
 .not-found {
     height: 100vh;
     background-color: #63a4ff;
@@ -35,4 +39,86 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+header {
+    background-color: #1560BD;
+    border-bottom: 2px solid #1560BD;
+    margin-bottom: 100px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #1560BD;
+    border-bottom: 2px solid #1560BD;
+    border-top: 2px solid #1560BD;
+}
+
+.content {
+    margin-bottom: 40px;
+}
+
+.logo img{
+    width: 150px;
+}
+
+.profile-info a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.search-container .rounded {
+    width: 300px;
+    flex-wrap: nowrap;
+}
+
+.table-row {
+    border-bottom: 1px solid #cfcfcf;
+    margin-bottom: 10px;
+}
+
+.table-row .title {
+    font-size: 20px;
+    color: #1560BD;
+}
+
+.table-row .title i {
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination nav {
+    margin-top: 20px;
+}
+
+.sign-up-item {
+    margin-bottom: 20px;
+}
+
+.register-main .container-fluid {
+    padding-left: 40px;
+}
+
+.user-info {
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 18px 14px rgba(122,118,118,0.27);
+    -webkit-box-shadow: 0px 2px 18px 14px rgba(122,118,118,0.27);
+    -moz-box-shadow: 0px 2px 18px 14px rgba(122,118,118,0.27);
 }
