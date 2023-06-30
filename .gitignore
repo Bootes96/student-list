@@ -1,5 +1,6 @@
 .DS_Store
 .idea/
+.bootstrap.css
 /vendor/
 /config/
 /tmp/
