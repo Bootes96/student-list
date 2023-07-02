@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-6">
                 <div class="profile-info">
-                    <?php if(!empty($_SESSION['user'])): ?>
+                    <?php if(isset($_COOKIE['hash'])): ?>
                         <a href="/profile">Профиль</a>
                     <?php else: ?>
                         <a href="user/signup">Регистрация</a>

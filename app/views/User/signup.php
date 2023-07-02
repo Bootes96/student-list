@@ -19,59 +19,60 @@
                 <div class="col-md-6">
                     <div class="form-group sign-up-item">
                         <label for="name">Имя</label>
-                        <input type="text" name="name" class="form-control" id="name">
+                        <input type="text" name="name" class="form-control" id="name" required value="<?= isset($_SESSION['form_data']['name']) ? $_SESSION['form_data']['name'] : ''; ?>">
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                     <div class="form-group sign-up-item">
                         <label for="lastname">Фамилия</label>
-                        <input type="text" name="lastname" class="form-control" id="lastname">
+                        <input type="text" name="lastname" class="form-control" id="lastname" required value="<?= isset($_SESSION['form_data']['lastname']) ? $_SESSION['form_data']['lastname'] : ''; ?>">
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                     <div class="form-group sign-up-item">
                         <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" id="email">
+                        <input type="email" name="email" class="form-control" id="email" required value="<?= isset($_SESSION['form_data']['email']) ? $_SESSION['form_data']['email'] : ''; ?>">
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group sign-up-item">
-                        <label for="birthYear">Год рождения</label>
-                        <select class="form-select" name="birthYear" id="birthYear"></select>
+                        <label for="birthyear">Год рождения</label>
+                        <input type="number" name="birthyear" class="form-control" id="birthyear" required value="<?= isset($_SESSION['form_data']['birthyear']) ? $_SESSION['form_data']['birthyear'] : ''; ?>">
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                     <div class="form-group sign-up-item">
                         <label for="gender">Пол</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked>
+                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Мужской" checked>
                             <label class="form-check-label" for="gender">
                                 Мужской
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Женский" <?php if(isset($_SESSION['form_data']['gender']) && $_SESSION['form_data']['gender'] === "Женский") {echo ' checked';}?>>
                             <label class="form-check-label" for="gender">
                                 Женский
                             </label>
                         </div>
                     </div>
                     <div class="form-group sign-up-item">
-                        <label for="groupNumber">Номер группы</label>
-                        <input type="text" name="groupNumber" class="form-control" id="groupNumber">
+                        <label for="groupnumber">Номер группы</label>
+                        <input type="text" name="groupnumber" class="form-control" id="groupnumber" required value="<?= isset($_SESSION['form_data']['groupnumber']) ? $_SESSION['form_data']['groupnumber'] : ''; ?>">
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                     <div class="form-group sign-up-item">
                         <label for="points">Количество баллов ЕГЭ</label>
-                        <input type="number" name="points" class="form-control" id="points">
+                        <input type="number" name="points" class="form-control" id="points" required value="<?= isset($_SESSION['form_data']['points']) ? $_SESSION['form_data']['points'] : ''; ?>">
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                     <div class="form-group sign-up-item">
                         <label for="location">Местоположение</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="location" id="location" checked value="resident">
+                            <input class="form-check-input" type="radio" name="location" id="location" checked value="Местный">
                             <label class="form-check-label" for="location">
                                 Местный
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="location" id="location" value="nonresident">
+                            <input class="form-check-input" type="radio" name="location" id="location" value="Иногородний" <?php if(isset($_SESSION['form_data']['location']) && $_SESSION['form_data']['location'] === "Иногородний") {echo ' checked';}?>>
                             <label class="form-check-label" for="location">
                                 Иногородний
                             </label>
@@ -81,5 +82,6 @@
                 </div>
             </div>
         </form>
+        <?php if(isset($_SESSION['form_data'])) unset($_SESSION['form_data']); ?>
     </div>
 </div>

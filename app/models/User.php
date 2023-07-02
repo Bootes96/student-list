@@ -7,11 +7,12 @@ class User extends AppModel {
         'name' => '',
         'lastname' => '',
         'email' => '',
-        'birthYear' => '',
+        'birthyear' => '',
         'gender' => '',
-        'groupNumber' => '',
+        'groupnumber' => '',
         'points' => '',
-        'location' => ''
+        'location' => '',
+        'hash' => ''
     ];
 
     public $errors = [];
@@ -31,13 +32,16 @@ class User extends AppModel {
         $validatedArr['lastname'] = $this->validateLastName($this->attributes['lastname']);
         $validatedArr['email'] = $this->validateEmail($this->attributes['email']);
         $validatedArr['points'] = $this->validatePoints($this->attributes['points']);
-        $validatedArr['groupNumber'] = $this->validateGroupNumber($this->attributes['groupNumber']);
+        $validatedArr['groupnumber'] = $this->validateGroupNumber($this->attributes['groupnumber']);
+        $validatedArr['birthyear'] = $this->validateBirthYear($this->attributes['birthyear']);
         
         foreach($validatedArr as $k => $v) {
             if($v !== true) {
                 $this->errors[$k] = $v; 
             }
         }
+
+        var_dump($this->attributes);
     }
 
     public function checkErrors() {
@@ -110,6 +114,14 @@ class User extends AppModel {
         } elseif(!preg_match($pattern, $groupNumber)) {
             return "Номер группы должен состоять только из цифр и русских букв";
         }
+        return true;
+    }
+
+    public function validateBirthYear($birthYear) {
+        if($birthYear < 1930 || $birthYear > 2009) {
+            return "Год рождения не может быть старше 1930 и младше 2009";
+        }
+        return true;
     }
 
 
@@ -121,5 +133,15 @@ class User extends AppModel {
             }
         $errors .= '</ul>';
         $_SESSION['error'] = $errors;
+    }
+
+
+    public function save($table) {
+        $bean = \R::dispense($table);
+        foreach($this->attributes as $name => $value) {
+            $bean->$name = $value;
+        }
+        
+        return \R::store($bean);
     }
 }
