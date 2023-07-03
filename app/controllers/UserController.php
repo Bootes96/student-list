@@ -31,6 +31,30 @@ class UserController extends AppController {
     }
 
     public function profileAction() {
-        
+        $user = new User();
+        $userInfo = $user->getUserInfo($_COOKIE['hash']);
+        $this->set(compact('userInfo'));
+    }
+
+    public function editAction() {
+        if(isset($_COOKIE['hash'])) {
+            $user = new User();
+            $userInfo = $user->getUserInfo($_COOKIE['hash']);
+            $this->set(compact('userInfo'));
+            if(!empty($_POST)) {
+                $data = $_POST;
+                $user->load($data);
+                $user->validateAllFields();
+                $errors = $user->checkErrors(); 
+                if($errors == true) {
+                    $user->getErrors();
+                } else {
+                    if($user->update('user', $_COOKIE['hash'])) {
+                        $_SESSION['success'] = "Информация успешно обновлена"; 
+                        redirect();
+                    }
+                }
+            }
+        }
     }
 }

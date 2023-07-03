@@ -41,7 +41,7 @@ class User extends AppModel {
             }
         }
 
-        var_dump($this->attributes);
+        var_dump($this->errors);
     }
 
     public function checkErrors() {
@@ -86,13 +86,20 @@ class User extends AppModel {
             return "Введите Email в правильном формате. Пример: example@mail.ru";
         }
 
-        $existingEmail = \R::findOne('user', 'email = ?', [$email]);
+        $emailExist = \R::findOne('user', 'email = ?', [$email]);
 
-        if($existingEmail) {
-            return "Пользователь с таким Email уже зарегистрирован";
+        if($emailExist) {
+            return $this->validateEmailAuth($email) ? true : "Пользователь с таким Email уже зарегистрирован";
         }
-
         return true;
+    }
+
+    //Если существующий юзер редактирует информацию
+    public function validateEmailAuth($email) {
+        $currentUserEmail = \R::findOne('user', 'hash = ?', [$_COOKIE['hash']])['email']; //SQL Injection?
+        if ($email ==  $currentUserEmail) {
+            return true;
+        }
     }
 
     public function validatePoints($points) {
@@ -142,6 +149,21 @@ class User extends AppModel {
             $bean->$name = $value;
         }
         
+        return \R::store($bean);
+    }
+
+    public function getUserInfo($hash) {
+        $user = \R::findOne('user', "hash = ?", [$hash]);
+        return $user;
+    }
+
+    public function update($table, $hash) {
+        $bean = \R::findOne($table, "hash = ?", [$hash]);
+        foreach($this->attributes as $name => $value) {
+            if($name != 'hash') { 
+                $bean->$name = $value;
+            }
+        }
         return \R::store($bean);
     }
 }
