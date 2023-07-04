@@ -127,3 +127,11 @@ footer {
     -webkit-box-shadow: 0px 2px 18px 14px rgba(122,118,118,0.27);
     -moz-box-shadow: 0px 2px 18px 14px rgba(122,118,118,0.27);
 }
+
+.pagination {
+    margin: 8px 0;
+}
+.pagination-lg > li > a, .pagination-lg > li > span {
+    padding: 7px 12px;
+    font-size: 15px;
+}
