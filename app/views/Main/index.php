@@ -7,6 +7,7 @@
             </span>
         </div>
     </div>
+    <?php if($users): ?>
     <div class="row table-row">
         <div class="col-md-3 title">Имя</div>
         <div class="col-md-3 title">Фамилия</div>
@@ -17,55 +18,18 @@
             Количество баллов
         </div>
     </div>
+    <?php foreach($users as $user): ?>
+    <a href="user/?id=<?=$user['id'];?>">
     <div class="row table-row">
-        <div class="col-md-3">Петров</div>
-        <div class="col-md-3">Олег</div>
-        <div class="col-md-3">227А</div>
-        <div class="col-md-3">290</div>
+        <div class="col-md-3"><?= $user['name'];?></div>
+        <div class="col-md-3"><?= $user['lastname'];?></div>
+        <div class="col-md-3"><?= $user['groupnumber'];?></div>
+        <div class="col-md-3"><?= $user['points'];?></div>
     </div>
-    <div class="row table-row">
-        <div class="col-md-3">Петров</div>
-        <div class="col-md-3">Олег</div>
-        <div class="col-md-3">227А</div>
-        <div class="col-md-3">290</div>
-    </div>
-    <div class="row table-row">
-        <div class="col-md-3">Петров</div>
-        <div class="col-md-3">Олег</div>
-        <div class="col-md-3">227А</div>
-        <div class="col-md-3">290</div>
-    </div>
-    <div class="row table-row">
-        <div class="col-md-3">Петров</div>
-        <div class="col-md-3">Олег</div>
-        <div class="col-md-3">227А</div>
-        <div class="col-md-3">290</div>
-    </div>
-    <div class="row table-row">
-        <div class="col-md-3">Петров</div>
-        <div class="col-md-3">Олег</div>
-        <div class="col-md-3">227А</div>
-        <div class="col-md-3">290</div>
-    </div>
-    <div class="row table-row">
-        <div class="col-md-3">Петров</div>
-        <div class="col-md-3">Олег</div>
-        <div class="col-md-3">227А</div>
-        <div class="col-md-3">290</div>
-    </div>
-    <div class="row table-row">
-        <div class="col-md-3">Петров</div>
-        <div class="col-md-3">Олег</div>
-        <div class="col-md-3">227А</div>
-        <div class="col-md-3">290</div>
-    </div>
-    <div class="row table-row">
-        <div class="col-md-3">Петров</div>
-        <div class="col-md-3">Олег</div>
-        <div class="col-md-3">227А</div>
-        <div class="col-md-3">290</div>
-    </div>
+    </a>
+    <?php endforeach;?>
 </div>
+  <?php endif;?>
 <div class="pagination">
     <nav aria-label="Page navigation example">
         <ul class="pagination">

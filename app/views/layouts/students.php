@@ -23,7 +23,7 @@
             <div class="col-md-6">
                 <div class="profile-info">
                     <?php if(isset($_COOKIE['hash'])): ?>
-                        <a href="user/profile">Профиль</a>
+                        <a href="user/?id=<?=$_COOKIE['id'];?>">Профиль</a>
                     <?php else: ?>
                         <a href="user/signup">Регистрация</a>
                     <?php endif; ?>
@@ -34,7 +34,7 @@
     <div class="content">
         <?= $content; ?>
     </div>
-    <footer class="footer">
+    <footer class="footer mt-auto">
         <div class="logo">
             <a href="<?=PATH;?>"><img src="img/student-list.png" alt="logo"></a>
         </div>

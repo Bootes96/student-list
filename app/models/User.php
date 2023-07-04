@@ -152,9 +152,14 @@ class User extends AppModel {
         return \R::store($bean);
     }
 
-    public function getUserInfo($hash) {
-        $user = \R::findOne('user', "hash = ?", [$hash]);
+    public function getUserInfo($id) {
+        $user = \R::findOne('user', "id = ?", [$id]);
         return $user;
+    }
+
+    public function getUserId($hash) {
+        $user = \R::findOne('user', "hash = ?", [$hash]);
+        return $user['id'];
     }
 
     public function update($table, $hash) {

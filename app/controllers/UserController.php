@@ -5,6 +5,19 @@ namespace app\controllers;
 use app\models\User;
 
 class UserController extends AppController {
+
+    public function indexAction() {
+        $id = !empty($_GET['id']) ? $_GET['id'] : null;
+        $user = new User();
+        $userInfo = $user->getUserInfo($id);
+        if($userInfo) {
+            $this->set(compact('userInfo'));
+        } else {
+            $_SESSION['error'] = "Такого студента не существует";
+        }
+    }
+
+
     public function signupAction() {
         if(!empty($_POST)) {
             $user = new User();
@@ -20,7 +33,9 @@ class UserController extends AppController {
                 if($user->save('user')) {
                     $_SESSION['success'] = "Вы успешно зарегистрированы";
                     $hash = $user->attributes['hash'];
+                    $userId = $user->getUserId($hash);
                     setcookie('hash', $hash, time()+3600*24*365*10, "/", null, false,true);
+                    setcookie('id', $userId, time()+3600*24*365*10, "/", null, false,true);
                     redirect(PATH);
                 } else {
                     $_SESSION['error'] = "Ошибка";
@@ -30,17 +45,11 @@ class UserController extends AppController {
         }
     }
 
-    public function profileAction() {
-        $user = new User();
-        $userInfo = $user->getUserInfo($_COOKIE['hash']);
-        $this->set(compact('userInfo'));
-    }
-
     public function editAction() {
         if(isset($_COOKIE['hash'])) {
             $user = new User();
-            $userInfo = $user->getUserInfo($_COOKIE['hash']);
-            $this->set(compact('userInfo'));
+            $userData = $user->getUserInfo($_COOKIE['id']);
+            $this->set(compact('userData'));
             if(!empty($_POST)) {
                 $data = $_POST;
                 $user->load($data);

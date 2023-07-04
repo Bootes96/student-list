@@ -1,5 +1,5 @@
 <h3>Редактировать профиль</h3>
-<?php if ($userInfo) : ?>
+<?php if (isset($userData)) : ?>
     <?php if (isset($_SESSION['error'])) : ?>
         <div class="alert alert-danger">
             <?php echo $_SESSION['error'];
@@ -17,23 +17,23 @@
             <div class="col-md-6">
                 <div class="form-group sign-up-item">
                     <label for="name">Имя</label>
-                    <input type="text" name="name" class="form-control" id="name" required value="<?= $userInfo['name']; ?>">
+                    <input type="text" name="name" class="form-control" id="name" required value="<?= $userData['name']; ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="lastname">Фамилия</label>
-                    <input type="text" name="lastname" class="form-control" id="lastname" required value="<?= $userInfo['lastname']; ?>">
+                    <input type="text" name="lastname" class="form-control" id="lastname" required value="<?= $userData['lastname']; ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" required value="<?= $userInfo['email']; ?>">
+                    <input type="email" name="email" class="form-control" id="email" required value="<?= $userData['email']; ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="birthyear">Год рождения</label>
-                    <input type="number" name="birthyear" class="form-control" id="birthyear" required value="<?= $userInfo['birthyear']; ?>">
+                    <input type="number" name="birthyear" class="form-control" id="birthyear" required value="<?= $userData['birthyear']; ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
@@ -45,7 +45,7 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="gender" value="Женский" <?php if ($userInfo['gender'] == 'Женский') {
+                        <input class="form-check-input" type="radio" name="gender" id="gender" value="Женский" <?php if ($userData['gender'] == 'Женский') {
                                                                                                                     echo ' checked';
                                                                                                                 } ?>>
                         <label class="form-check-label" for="gender">
@@ -55,12 +55,12 @@
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="groupnumber">Номер группы</label>
-                    <input type="text" name="groupnumber" class="form-control" id="groupnumber" required value="<?= $userInfo['groupnumber']; ?>">
+                    <input type="text" name="groupnumber" class="form-control" id="groupnumber" required value="<?= $userData['groupnumber']; ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="points">Количество баллов ЕГЭ</label>
-                    <input type="number" name="points" class="form-control" id="points" required value="<?= $userInfo['points']; ?>">
+                    <input type="number" name="points" class="form-control" id="points" required value="<?= $userData['points']; ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
@@ -72,7 +72,7 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="location" id="location" value="Иногородний" <?php if ($userInfo['location'] == 'иногородний') {
+                        <input class="form-check-input" type="radio" name="location" id="location" value="Иногородний" <?php if ($userData['location'] == 'иногородний') {
                                                                                                                             echo ' checked';
                                                                                                                         } ?>>
                         <label class="form-check-label" for="location">
