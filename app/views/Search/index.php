@@ -1,14 +1,22 @@
 <div class="container-fluid">
     <div class="search-container">
         <form action="search" class="input-group rounded" autocomplete="off">
-            <input type="text" class="form-control rounded" placeholder="Поиск" aria-label="Search" aria-describedby="search-addon" name="query" onkeyup="search(this.value)" />
+            <input type="text" class="form-control rounded" placeholder="Поиск" aria-label="Search" aria-describedby="search-addon" name="query" />
             <span class="input-group-text border-0" id="search-addon">
                 <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
             </span>
-            <div id="livesearch"></div>
         </form>
     </div>
+    <?php if (isset($_SESSION['error'])) : ?>
+        <div class="alert alert-danger">
+            <?php echo $_SESSION['error'];
+            unset($_SESSION['error']); ?>
+        </div>
+    <?php endif; ?>
     <?php if ($users) : ?>
+        <div class="search-query">
+            <h3>Показаны результаты по запросу: <span><?= !empty($query) ? $query : ''; ?></span></h3>
+        </div>
         <div class="row table-row">
             <div class="col-md-3 title">Имя</div>
             <div class="col-md-3 title">Фамилия</div>
