@@ -39,16 +39,16 @@
                 <div class="form-group sign-up-item">
                     <label for="gender">Пол</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="gender" value="Мужской" checked>
-                        <label class="form-check-label" for="gender">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="Мужской" checked>
+                        <label class="form-check-label" for="male">
                             Мужской
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="gender" value="Женский" <?php if ($userData['gender'] == 'Женский') {
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="Женский" <?php if ($userData['gender'] == 'Женский') {
                                                                                                                     echo ' checked';
                                                                                                                 } ?>>
-                        <label class="form-check-label" for="gender">
+                        <label class="form-check-label" for="female">
                             Женский
                         </label>
                     </div>
@@ -66,16 +66,16 @@
                 <div class="form-group sign-up-item">
                     <label for="location">Местоположение</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="location" id="location" checked value="Местный">
-                        <label class="form-check-label" for="location">
+                        <input class="form-check-input" type="radio" name="location" id="resident" checked value="Местный">
+                        <label class="form-check-label" for="resident">
                             Местный
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="location" id="location" value="Иногородний" <?php if ($userData['location'] == 'иногородний') {
+                        <input class="form-check-input" type="radio" name="location" id="nonresident" value="Иногородний" <?php if ($userData['location'] == 'иногородний') {
                                                                                                                             echo ' checked';
                                                                                                                         } ?>>
-                        <label class="form-check-label" for="location">
+                        <label class="form-check-label" for="nonresident">
                             Иногородний
                         </label>
                     </div>

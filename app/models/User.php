@@ -17,7 +17,7 @@ class User extends AppModel {
 
     public $errors = [];
 
-    public function load($data) {
+    public function load(array $data) {
         foreach($this->attributes as $name => $value) {
             if(isset($data[$name])) {
                 $this->attributes[$name] = $data[$name];
@@ -51,7 +51,7 @@ class User extends AppModel {
         return false;
     }
 
-    public function validateName($name) {
+    private function validateName(string $name) {
         $pattern = "/^[А-ЯЁ]([\s\-\']?[а-яёА-ЯЁ][\s\-\']?)*$/u";
         $nameLength = mb_strlen($name);
         if(!$nameLength) {
@@ -65,7 +65,7 @@ class User extends AppModel {
         return true;
     }
 
-    public function validateLastName($lastName) {
+    private function validateLastName(string $lastName) {
         $pattern = "/^[А-ЯЁ]([\s\-\']?[а-яёА-ЯЁ][\s\-\']?)*$/u";
         $lastNameLength = mb_strlen($lastName);
         if(!$lastNameLength) {
@@ -79,7 +79,7 @@ class User extends AppModel {
         return true;
     }
 
-    public function validateEmail($email) {
+    private function validateEmail(string $email) {
         if(!mb_strlen($email)) {
             return "Заполните поле Email";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -95,14 +95,14 @@ class User extends AppModel {
     }
 
     //Если существующий юзер редактирует информацию
-    public function validateEmailAuth($email) {
+    private function validateEmailAuth(string $email) {
         $currentUserEmail = \R::findOne('user', 'hash = ?', [$_COOKIE['hash']])['email']; //SQL Injection?
         if ($email ==  $currentUserEmail) {
             return true;
         }
     }
 
-    public function validatePoints($points) {
+    private function validatePoints(int $points) {
         if($points < 50 || $points > 300) {
             return "Количество баллов не может быть меньше 50 и больше 300";
         }
@@ -110,7 +110,7 @@ class User extends AppModel {
         return true;
     }
 
-    public function validateGroupNumber($groupNumber) {
+    private function validateGroupNumber(string $groupNumber) {
         $pattern = "/^[а-яёА-ЯЁ0-9]+$/u";
         $groupLength = mb_strlen($groupNumber);
 
@@ -124,7 +124,7 @@ class User extends AppModel {
         return true;
     }
 
-    public function validateBirthYear($birthYear) {
+    private function validateBirthYear(int $birthYear) {
         if($birthYear < 1930 || $birthYear > 2009) {
             return "Год рождения не может быть старше 1930 и младше 2009";
         }
@@ -143,7 +143,7 @@ class User extends AppModel {
     }
 
 
-    public function save($table) {
+    public function save(string $table) {
         $bean = \R::dispense($table);
         foreach($this->attributes as $name => $value) {
             $bean->$name = $value;

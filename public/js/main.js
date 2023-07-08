@@ -5,8 +5,16 @@ const setOrder = (value) => {
     let newUrl = url + "?sortByPoints=" + value;
     window.location.href = newUrl;
  }
-radioDesc.addEventListener('click', setOrder.bind(null, radioDesc.value));
-radioAsc.addEventListener('click', setOrder.bind(null, radioAsc.value));
+
+if(!!radioDesc) {
+  radioDesc.addEventListener('click', setOrder.bind(null, radioDesc.value));
+}
+
+if(!!radioAsc) {
+  radioAsc.addEventListener('click', setOrder.bind(null, radioAsc.value));
+}
+
+
 
 
 

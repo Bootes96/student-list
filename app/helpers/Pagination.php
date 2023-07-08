@@ -4,19 +4,18 @@ namespace app\helpers;
 
 class Pagination {
 
-    public $currentPage;
-    public $perPage;
-    public $total;
-    public $countPages;
-    public $uri;
+    public int $currentPage;
+    public int $perPage;
+    public int $total;
+    public int $countPages;
+    public string $uri;
 
-    public function __construct($page, $perPage, $total) {
+    public function __construct(int $page, int $perPage, int $total) {
         $this->perPage = $perPage;
         $this->total = $total;
         $this->countPages = $this->getCountPages();
         $this->currentPage = $this->getCurrentPage($page);
         $this->uri = $this->getParams();
-        //var_dump($this->uri);
     }
 
     public function getHtml() {

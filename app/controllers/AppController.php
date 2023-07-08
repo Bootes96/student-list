@@ -6,7 +6,7 @@ use app\models\AppModel;
 use studentList\core\base\Controller;
 
 class AppController extends Controller {
-    public function __construct($route)
+    public function __construct(array $route)
     {
         parent::__construct($route);
         new AppModel();

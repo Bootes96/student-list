@@ -183,6 +183,11 @@ footer {
     position: relative;
     display: inline-block;
   }
+
+  #dropdown {
+    min-width: 250px;
+    padding: 10px;
+  }
   
   /* Выпадающее содержимое (скрыто по умолчанию) */
   .dropdown-content {

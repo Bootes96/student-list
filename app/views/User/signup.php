@@ -7,12 +7,6 @@
                 unset($_SESSION['error']); ?>
             </div>
         <?php endif; ?>
-        <?php if (isset($_SESSION['success'])) : ?>
-            <div class="alert alert-success">
-                <?php echo $_SESSION['success'];
-                unset($_SESSION['success']); ?>
-            </div>
-        <?php endif; ?>
         <h3>Регистрация</h3>
         <form method="post" action="user/signup" id="signup">
             <div class="row">
@@ -41,14 +35,14 @@
                     <div class="form-group sign-up-item">
                         <label for="gender">Пол</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Мужской" checked>
-                            <label class="form-check-label" for="gender">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="Мужской" checked>
+                            <label class="form-check-label" for="male">
                                 Мужской
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Женский" <?php if(isset($_SESSION['form_data']['gender']) && $_SESSION['form_data']['gender'] === "Женский") {echo ' checked';}?>>
-                            <label class="form-check-label" for="gender">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="Женский" <?php if(isset($_SESSION['form_data']['gender']) && $_SESSION['form_data']['gender'] === "Женский") {echo ' checked';}?>>
+                            <label class="form-check-label" for="female">
                                 Женский
                             </label>
                         </div>
@@ -66,14 +60,14 @@
                     <div class="form-group sign-up-item">
                         <label for="location">Местоположение</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="location" id="location" checked value="Местный">
-                            <label class="form-check-label" for="location">
+                            <input class="form-check-input" type="radio" name="location" id="resident" checked value="Местный">
+                            <label class="form-check-label" for="resident">
                                 Местный
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="location" id="location" value="Иногородний" <?php if(isset($_SESSION['form_data']['location']) && $_SESSION['form_data']['location'] === "Иногородний") {echo ' checked';}?>>
-                            <label class="form-check-label" for="location">
+                            <input class="form-check-input" type="radio" name="location" id="nonresident" value="Иногородний" <?php if(isset($_SESSION['form_data']['location']) && $_SESSION['form_data']['location'] === "Иногородний") {echo ' checked';}?>>
+                            <label class="form-check-label" for="nonresident">
                                 Иногородний
                             </label>
                         </div>
