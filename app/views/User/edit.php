@@ -45,7 +45,7 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="female" value="Женский" <?php if ($userData['gender'] == 'Женский') {
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="Женский" <?php if ($userData['gender'] == 'женский') {
                                                                                                                     echo ' checked';
                                                                                                                 } ?>>
                         <label class="form-check-label" for="female">

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\User;
+use app\validators\Validator;
 
 class UserController extends AppController {
 
@@ -21,11 +22,9 @@ class UserController extends AppController {
         if(!empty($_POST)) {
             $user = new User();
             $data = $this->clearPostValues();
-            var_dump($data);
             $user->load($data);
-            $user->validateAllFields($data);
-            $errors = $user->checkErrors();
-            if($errors == true) {
+            $user->validate();
+            if($user->checkErrors()) {
                 $user->getErrors();
                 $_SESSION['form_data'] = $data;
             } else {
@@ -53,10 +52,10 @@ class UserController extends AppController {
             $this->set(compact('userData'));
             if(!empty($_POST)) {
                 $data = $this->clearPostValues();
+                $user = new User();
                 $user->load($data);
-                $user->validateAllFields();
-                $errors = $user->checkErrors(); 
-                if($errors == true) {
+                $user->validate(); 
+                if($user->checkErrors()) {
                     $user->getErrors();
                 } else {
                     if($user->update('user', $_COOKIE['hash'])) {
