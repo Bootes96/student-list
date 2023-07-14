@@ -22,9 +22,26 @@
             <div class="col-md-3 title">Фамилия</div>
             <div class="col-md-3 title">Номер группы</div>
             <div class="col-md-3 title">
-                <i class="fa-sharp fa-solid fa-arrow-down"></i>
-                <i class="fa-sharp fa-solid fa-arrow-up"></i>
-                Количество баллов
+                Баллы ЕГЭ
+                <div class="dropdown">
+                    <i class="fa-solid fa-arrow-down-wide-short dropbtn" style="color: #1560BD;" onclick="dropdown()"></i>
+                    <div id="dropdown" class="dropdown-content">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sort" id="desc" value="DESC" checked>
+                            <label class="form-check-label" for="desc">
+                                По убыванию баллов</a>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sort" id="asc" value="ASC" <?php if (isset($_SESSION['sort']) && $_SESSION['sort'] === "ASC") {
+                                                                                                                echo htmlspecialchars(' checked', ENT_QUOTES);
+                                                                                                            } ?>>
+                            <label class="form-check-label" for="asc">
+                                По возрастанию баллов
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <?php foreach ($users as $user) : ?>

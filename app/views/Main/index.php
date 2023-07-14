@@ -5,7 +5,6 @@
     </div>
 <?php endif; ?>
 
-
 <div class="container-fluid">
     <div class="search-container">
         <form action="search" class="input-group rounded" autocomplete="off">
@@ -34,7 +33,7 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="sort" id="asc" value="ASC" <?php if (isset($_SESSION['sort']) && $_SESSION['sort'] === "ASC") {
-                                                                                                                echo ' checked';
+                                                                                                                echo htmlspecialchars(' checked', ENT_QUOTES);
                                                                                                             } ?>>
                             <label class="form-check-label" for="asc">
                                 По возрастанию баллов
@@ -42,15 +41,14 @@
                         </div>
                     </div>
                 </div>
-                </a>
             </div>
         </div>
         <?php foreach ($users as $user) : ?>
             <div class="row table-row">
-                <div class="col-md-3"><a href="user/?id=<?= $user['id']; ?>"><?= $user['name']; ?></a></div>
-                <div class="col-md-3"><a href="user/?id=<?= $user['id']; ?>"><?= $user['lastname']; ?></a></div>
-                <div class="col-md-3"><?= $user['groupnumber']; ?></div>
-                <div class="col-md-3"><?= $user['points']; ?></div>
+                <div class="col-md-3"><a href="user/?id=<?= htmlspecialchars($user['id'], ENT_QUOTES); ?>"><?= htmlspecialchars($user['name'], ENT_QUOTES); ?></a></div>
+                <div class="col-md-3"><a href="user/?id=<?= htmlspecialchars($user['id'], ENT_QUOTES); ?>"><?= htmlspecialchars($user['lastname'], ENT_QUOTES); ?></a></div>
+                <div class="col-md-3"><?= htmlspecialchars($user['groupnumber'], ENT_QUOTES); ?></div>
+                <div class="col-md-3"><?= htmlspecialchars($user['points'], ENT_QUOTES); ?></div>
             </div>
         <?php endforeach; ?>
         <div class="text-center">

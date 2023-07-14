@@ -7,13 +7,13 @@
     <?php endif; ?>
     <?php if (isset($userInfo)) : ?>
         <div class="col-md-4 user-info">
-            <h3><?= $userInfo['lastname']; ?> <?= $userInfo['name']; ?></h3>
-            <p>Пол: <?= $userInfo['gender']; ?></p>
-            <p>Год рождения: <?= $userInfo['birthyear']; ?></p>
-            <p>Email: <?= $userInfo['email']; ?></p>
-            <p>Местоположение: <?= $userInfo['location']; ?></p>
-            <p>Группа: <?= $userInfo['groupnumber']; ?></p>
-            <p>Количество баллов ЕГЭ: <?= $userInfo['points']; ?></p>
+            <h3><?= htmlspecialchars($userInfo['lastname'], ENT_QUOTES); ?> <?= htmlspecialchars($userInfo['name'], ENT_QUOTES); ?></h3>
+            <p>Пол: <?= htmlspecialchars($userInfo['gender'], ENT_QUOTES); ?></p>
+            <p>Год рождения: <?= htmlspecialchars($userInfo['birthyear'], ENT_QUOTES); ?></p>
+            <p>Email: <?= htmlspecialchars($userInfo['email'], ENT_QUOTES); ?></p>
+            <p>Местоположение: <?= htmlspecialchars($userInfo['lastname'], ENT_QUOTES) ?></p>
+            <p>Группа: <?= htmlspecialchars($userInfo['groupnumber'], ENT_QUOTES); ?></p>
+            <p>Количество баллов ЕГЭ: <?= htmlspecialchars($userInfo['points'], ENT_QUOTES); ?></p>
         </div>
         <?php if ($userInfo['hash'] === $_COOKIE['hash']) : ?>
             <a href="user/edit" type="button" class="btn btn-primary">Редактировать профиль</a>

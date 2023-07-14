@@ -1,9 +1,23 @@
 const radioDesc = document.querySelector('#desc');
 const radioAsc = document.querySelector('#asc');
-let url = window.location.pathname;
+let url = window.location.search;
 const setOrder = (value) => {
-    let newUrl = url + "?sortByPoints=" + value;
-    window.location.href = newUrl;
+    //если в searchParams пусто
+    if(window.location.search == "") {
+      let newUrl = url + "?sortByPoints=" + value;
+      window.location.href = newUrl;
+    } else { //если в searchParams есть параметры
+      let href = new URL(window.location.href);
+      href.searchParams.delete('sortByPoints');
+      href.searchParams.append('sortByPoints', value);
+      //Если есть параметр page, то удаляем его из середины и добавляем в конце
+      if(href.searchParams.has('page')) {
+        let pageNumber = href.searchParams.get('page');
+        href.searchParams.delete('page');
+        href.searchParams.append('page', pageNumber);
+      }
+      window.location.href = href.toString();
+    }
  }
 
 if(!!radioDesc) {
@@ -13,9 +27,6 @@ if(!!radioDesc) {
 if(!!radioAsc) {
   radioAsc.addEventListener('click', setOrder.bind(null, radioAsc.value));
 }
-
-
-
 
 
 

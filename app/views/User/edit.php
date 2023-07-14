@@ -17,23 +17,23 @@
             <div class="col-md-6">
                 <div class="form-group sign-up-item">
                     <label for="name">Имя</label>
-                    <input type="text" name="name" class="form-control" id="name" required value="<?= $userData['name']; ?>">
+                    <input type="text" name="name" class="form-control" id="name" required value="<?= htmlspecialchars($userData['name'], ENT_QUOTES); ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="lastname">Фамилия</label>
-                    <input type="text" name="lastname" class="form-control" id="lastname" required value="<?= $userData['lastname']; ?>">
+                    <input type="text" name="lastname" class="form-control" id="lastname" required value="<?= htmlspecialchars($userData['lastname'], ENT_QUOTES); ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" required value="<?= $userData['email']; ?>">
+                    <input type="email" name="email" class="form-control" id="email" required value="<?= htmlspecialchars($userData['email'], ENT_QUOTES); ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="birthyear">Год рождения</label>
-                    <input type="number" name="birthyear" class="form-control" id="birthyear" required value="<?= $userData['birthyear']; ?>">
+                    <input type="number" name="birthyear" class="form-control" id="birthyear" required value="<?= htmlspecialchars($userData['birthyear'], ENT_QUOTES); ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="female" value="Женский" <?php if ($userData['gender'] == 'женский') {
-                                                                                                                    echo ' checked';
+                                                                                                                    echo htmlspecialchars(' checked', ENT_QUOTES);
                                                                                                                 } ?>>
                         <label class="form-check-label" for="female">
                             Женский
@@ -55,12 +55,12 @@
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="groupnumber">Номер группы</label>
-                    <input type="text" name="groupnumber" class="form-control" id="groupnumber" required value="<?= $userData['groupnumber']; ?>">
+                    <input type="text" name="groupnumber" class="form-control" id="groupnumber" required value="<?= htmlspecialchars($userData['groupnumber'], ENT_QUOTES); ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
                     <label for="points">Количество баллов ЕГЭ</label>
-                    <input type="number" name="points" class="form-control" id="points" required value="<?= $userData['points']; ?>">
+                    <input type="number" name="points" class="form-control" id="points" required value="<?= htmlspecialchars($userData['points'], ENT_QUOTES); ?>">
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="form-group sign-up-item">
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="location" id="nonresident" value="Иногородний" <?php if ($userData['location'] == 'иногородний') {
-                                                                                                                            echo ' checked';
+                                                                                                                            echo htmlspecialchars(' checked', ENT_QUOTES);
                                                                                                                         } ?>>
                         <label class="form-check-label" for="nonresident">
                             Иногородний
