@@ -6,8 +6,11 @@ use app\helpers\Pagination;
 
 class MainController extends AppController{
     public function indexAction() {
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
         $sort = isset($_GET['sortByPoints']) ? $_GET['sortByPoints'] : "DESC"; 
+        if($sort != "DESC" && $sort != "ASC") {
+            throw new \Exception("Страница не найдена", 404);
+        }
         $_SESSION["sort"] = $sort;
         $perPage = 5;
         $total = \R::count('user');

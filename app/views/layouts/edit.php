@@ -8,15 +8,6 @@
                         <a href="<?=PATH;?>"><img src="img/student-list.png" alt="logo"></a>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="profile-info">
-                        <?php if(isset($_COOKIE['hash'])): ?>
-                            <a href="user/?id=<?=$_COOKIE['id'];?>">Профиль</a>
-                        <?php else: ?>
-                            <a href="user/signup">Регистрация</a>
-                        <?php endif; ?>
-                    </div>
-                </div>
             </div>
         </header>
         <div class="content">  

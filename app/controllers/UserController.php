@@ -8,6 +8,7 @@ use app\validators\Validator;
 class UserController extends AppController {
 
     public function indexAction() {
+        $this->layout = 'edit';
         $id = !empty($_GET['id']) ? $_GET['id'] : null;
         $user = new User();
         $userInfo = $user->getUserInfo((int)$id);
@@ -46,6 +47,7 @@ class UserController extends AppController {
 
 
     public function editAction() {
+        $this->layout = 'edit';
         if(isset($_COOKIE['hash'])) {
             $user = new User();
             $userData = $user->getUserInfo((int)$_COOKIE['id']);
